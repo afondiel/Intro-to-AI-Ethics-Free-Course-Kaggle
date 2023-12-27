@@ -1,0 +1,6 @@
+[book]
+authors = ["afondiel"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Intro to AI Ethics Crash Course by Kaggle - Takeaways Notes"
