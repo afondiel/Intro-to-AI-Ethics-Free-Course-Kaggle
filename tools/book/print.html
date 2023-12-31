@@ -1,0 +1,349 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Intro to AI Ethics Crash Course by Kaggle - Takeaways Notes</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="course-notes.html"><strong aria-hidden="true">1.</strong> Overview</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Intro to AI Ethics Crash Course by Kaggle - Takeaways Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="overview"><a class="header" href="#overview">Overview</a></h1>
+<p>Table of Contents</p>
+<ul>
+<li><a href="course-notes.html#overview">Overview</a></li>
+<li><a href="course-notes.html#1-introduction-to-ai-ethics">1. Introduction to AI Ethics</a></li>
+<li><a href="course-notes.html#2-human-centered-design-for-ai">2. Human-Centered Design for AI</a></li>
+<li><a href="course-notes.html#3-identifying-bias-in-ai">3. Identifying Bias in AI</a></li>
+<li><a href="course-notes.html#4-ai-fairness">4. AI Fairness</a></li>
+<li><a href="course-notes.html#5-model-cards">5. Model Cards</a></li>
+<li><a href="course-notes.html#references">References</a></li>
+</ul>
+<h2 id="overview-1"><a class="header" href="#overview-1">Overview</a></h2>
+<p>Explore practical tools to guide the moral design of AI systems.</p>
+<h3 id="1-introduction-to-ai-ethics"><a class="header" href="#1-introduction-to-ai-ethics">1. Introduction to AI Ethics</a></h3>
+<p>Learn what to expect from the course.</p>
+<h3 id="2-human-centered-design-for-ai"><a class="header" href="#2-human-centered-design-for-ai">2. Human-Centered Design for AI</a></h3>
+<p>Design systems that serve people’s needs. Navigate issues in several real-world scenarios.</p>
+<p>6 Steps to Design HCD AI Systems:</p>
+<ol>
+<li>Understand people’s needs to define the problem</li>
+<li>Ask if AI adds value to any potential solution</li>
+<li>Consider the potential harms that the AI system could cause</li>
+<li>Prototype, starting with non-AI solutions</li>
+<li>Provide ways for people to challenge the system</li>
+<li>Build in safety measures</li>
+</ol>
+<h3 id="3-identifying-bias-in-ai"><a class="header" href="#3-identifying-bias-in-ai">3. Identifying Bias in AI</a></h3>
+<p>Bias can creep in at any stage in the pipeline. Investigate a simple model that identifies toxic text.</p>
+<p>6 types of bias (Src: <a href="https://arxiv.org/pdf/1901.10002.pdf">link</a>):</p>
+<ul>
+<li>historial bias</li>
+<li>reprensentations bias</li>
+<li>measurements bias</li>
+<li>aggregation bias</li>
+<li>evaluation bias</li>
+<li>deployment bias</li>
+</ul>
+<p>Bias framework:</p>
+<p><img src="./docs/bvArGRY.png" alt="" /></p>
+<p>(Src: <a href="https://arxiv.org/pdf/1901.10002.pdf">link</a>)</p>
+<h3 id="4-ai-fairness"><a class="header" href="#4-ai-fairness">4. AI Fairness</a></h3>
+<p>Learn about four different types of fairness. Assess a toy model trained to judge credit card applications.</p>
+<p>4 fairness criteria (Src: <a href="https://arxiv.org/pdf/1710.03184.pdf">link</a>)</p>
+<ol>
+<li>Demographic parity/ statistical parity</li>
+<li>Equal opportunity (TPR based/<a href="https://en.wikipedia.org/wiki/Confusion_matrix">confusion matrix</a>)</li>
+<li>Equal accuracy</li>
+<li>Group unaware / &quot;Fairness through unawareness&quot;</li>
+</ol>
+<h3 id="5-model-cards"><a class="header" href="#5-model-cards">5. Model Cards</a></h3>
+<p>Increase transparency by communicating key information about machine learning models.</p>
+<p>9 model card sections(Src. <a href="https://arxiv.org/pdf/1810.03993.pdf">Link</a>): </p>
+<ol>
+<li>Model Details</li>
+<li>Intended Use</li>
+<li>Factors</li>
+<li>Metrics</li>
+<li>Evaluation Data</li>
+<li>Training Data</li>
+<li>Quantitative Analyses</li>
+<li>Ethical Considerations</li>
+<li>Caveats and Recommendations</li>
+</ol>
+<ul>
+<li><a href="https://github.com/Kaggle/learntools/blob/master/notebooks/ethics/pdfs/smiling_in_images_model_card.pdf">Model Card - Smiling Detection in Images</a></li>
+<li><a href="https://github.com/Kaggle/learntools/blob/master/notebooks/ethics/pdfs/toxicity_in_text_model_card.pdf">Model Card - Toxicity in Text</a></li>
+</ul>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
+<ul>
+<li><a href="https://www.kaggle.com/learn/intro-to-ai-ethics">Course link Kaggle</a></li>
+</ul>
+<p>Tools</p>
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Human-centered_design#:~:text=Human%2Dcentered%20design%20is%20an,and%20usability%20knowledge%20and%20techniques.">Human Centered Design</a></p>
+</li>
+<li>
+<p><a href="https://developers.googleblog.com/2019/09/enabling-developers-and-organizations.html">Differential Privacy - Google</a></p>
+</li>
+<li>
+<p><a href="https://blog.research.google/2017/04/federated-learning-collaborative.html">Federated Learning - Google</a></p>
+</li>
+</ul>
+<p><strong>HCD Application to AI:</strong></p>
+<ul>
+<li>Lex Fridman’s <a href="https://www.youtube.com/watch?v=bmjamLZ3v8A">introductory lecture</a> on Human-Centered Artificial Intelligence</li>
+<li>Google’s People + AI Research (PAIR) <a href="https://pair.withgoogle.com/guidebook/">Guidebook</a></li>
+<li>Stanford Human-Centered Artificial Intelligence (HAI) <a href="https://hai.stanford.edu/research">research</a></li>
+</ul>
+<p><strong>Identifying Bias:</strong></p>
+<p>To continue learning about bias, check out <a href="https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/overview">the Jigsaw Unintended Bias in Toxicity Classification</a> competition that was introduced in this exercise.</p>
+<ul>
+<li>Kaggler <a href="https://www.kaggle.com/christofhenkel">Dieter</a> has written a helpful two-part series that teaches you how to preprocess the data and train a neural network to make a competition submission. <a href="https://www.kaggle.com/christofhenkel/how-to-preprocessing-for-glove-part1-eda">Get started here</a>.</li>
+<li>Many Kagglers have written helpful notebooks that you can use to get started. <a href="https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/notebooks?sortBy=voteCount&amp;group=everyone&amp;pageSize=20&amp;competitionId=12500">Check them out</a> on the competition page.</li>
+</ul>
+<p>Another Kaggle competition that you can use to learn about bias is the <a href="https://www.kaggle.com/c/inclusive-images-challenge">Inclusive Images Challenge</a>, which you can read more about in <a href="https://blog.research.google/2018/09/introducing-inclusive-images-competition.html">this blog post</a>. </p>
+<p>The competition focuses on evaluation bias in computer vision.</p>
+<p><strong>AI Fairness:</strong></p>
+<ul>
+<li><a href="https://arxiv.org/abs/2007.06024">Impossibility Theorem of Machine Fairness</a></li>
+<li>Explore different types of fairness with an <a href="http://research.google.com/bigpicture/attacking-discrimination-in-ml/">interactive tool</a>.
+You can read more about equal opportunity in <a href="https://ai.googleblog.com/2016/10/equality-of-opportunity-in-machine.html">this blog post</a>.
+Analyze ML fairness with <a href="https://pair-code.github.io/what-if-tool/learn/tutorials/walkthrough/">this walkthrough</a> of the What-If Tool, created by the <a href="https://pair.withgoogle.com/">People and AI Research (PAIR) team at Google</a>. This tool allows you to quickly amend an ML model, once you've picked the fairness criterion that is best for your use case.</li>
+</ul>
+<p>Further reading:</p>
+<ul>
+<li><a href="https://partnershiponai.org/search/?search=fairness">partnershipai.org</a></li>
+<li><a href="https://ai.meta.com/blog/fair-progress-and-learnings-across-socially-responsible-ai-research/">Responsible AI - FAIR (Facebook Artificial Intelligence Research) progress and learnings across socially responsible AI research - metaai</a></li>
+<li><a href="https://facctconference.org/">ACM Conference on Fairness, Accountability, and Transparency (ACM FAccT)</a></li>
+</ul>
+<p><strong>Model Cards:</strong></p>
+<ul>
+<li><a href="https://blog.salesforceairesearch.com/model-cards-for-ai-model-transparency/">Model Cards for AI Model Transparency</a></li>
+<li><a href="https://github.com/openai/gpt-3/blob/master/model-card.md">Open AI’s model card for GPT-3</a></li>
+<li><a href="https://modelcards.withgoogle.com/face-detection">Google Cloud's example model cards - Face Detection</a></li>
+<li><a href="https://huggingface.co/docs/hub/model-cards">Huggingface Model cards</a></li>
+</ul>
+<p>Further read: </p>
+<ul>
+<li><a href="https://aifs360.res.ibm.com/">AI FactSheets 360</a></li>
+</ul>
+<p>Papers: </p>
+<ul>
+<li><a href="/docs/papers/">Human-Centered Design for AI</a></li>
+<li><a href="/docs/papers/">Identifying Bias in AI</a></li>
+<li><a href="/docs/papers/">AI Fairness</a></li>
+<li><a href="/docs/papers/">Model Cards</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>
