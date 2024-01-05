@@ -2,5 +2,6 @@
 authors = ["afondiel"]
 language = "en"
 multilingual = false
-src = "tools/src" 
+# src = "tools/src" 
+src = "src" 
 title = "Intro to AI Ethics Crash Course by Kaggle - Takeaways Notes"
