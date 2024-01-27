@@ -126,7 +126,7 @@ Analyze ML fairness with [this walkthrough](https://pair-code.github.io/what-if-
 Further reading:
 
 - [partnershipai.org](https://partnershiponai.org/search/?search=fairness)
-- [Responsible AI - FAIR (Facebook Artificial Intelligence Research) progress and learnings across socially responsible AI research - metaai](https://ai.meta.com/blog/fair-progress-and-learnings-across-socially-responsible-ai-research/)
+- [FAIR (The Fundamental/(Facebook) Artificial Intelligence Research) - Responsible AI - progress and learnings across socially responsible AI research - metaai](https://ai.meta.com/blog/fair-progress-and-learnings-across-socially-responsible-ai-research/)
 - [ACM Conference on Fairness, Accountability, and Transparency (ACM FAccT)](https://facctconference.org/)
 
 
